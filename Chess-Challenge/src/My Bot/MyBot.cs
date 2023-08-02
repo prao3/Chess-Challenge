@@ -25,6 +25,11 @@ public class MyBot : IChessBot
             }
         }
 
+        // Waiting some amount of time so I can see the moves being made in testing
+        while(timer.MillisecondsElapsedThisTurn < 1000) {
+
+        }
+
         // Returning a random move
         return bestMove;
     }
