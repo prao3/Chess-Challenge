@@ -15,4 +15,20 @@ public class MyBot : IChessBot
         // Returning a random move
         return moves[randomIndex];
     }
+
+    /*
+    A method to return a numerical value of a position.
+    If we think white is better, returns a positive number.
+    If we think black is better, returns a negative number.
+    Zero is neutral/draw.
+
+    Parameters:
+        board: the board to evaluate
+
+    Returns:
+        A float representing the numerical evaluation of a position
+    */
+    private float Evaluate(Board board) {
+        return 0;
+    }
 }
