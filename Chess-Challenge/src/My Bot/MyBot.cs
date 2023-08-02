@@ -16,17 +16,13 @@ public class MyBot : IChessBot
         float bestEval = 0;
         // Evaluating each move and keeping the one with the highest eval
         foreach (Move m in moves) {
-            // Making the move on the board
-            board.MakeMove(m);
             // Evaluating the position
-            float eval = Evaluate(board);
+            float eval = Evaluate(board, m);
             // If this is a better move than our previous best, save it
             if (eval > bestEval) {
                 bestEval = eval;
                 bestMove = m;
             }
-            // Undoing the move so we can evaluate the rest
-            board.UndoMove(m);
         }
 
         // Returning a random move
@@ -45,7 +41,7 @@ public class MyBot : IChessBot
     Returns:
         A float representing the numerical evaluation of a position
     */
-    private float Evaluate(Board board) {
+    private float Evaluate(Board board, Move move) {
         return 0;
     }
 }
