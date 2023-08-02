@@ -6,14 +6,31 @@ public class MyBot : IChessBot
 {
     public Move Think(Board board, Timer timer)
     {
-        // RNG
-        Random random = new Random();
         // Legal moves on the board
         Move[] moves = board.GetLegalMoves();
-        // Random index to pick from
-        int randomIndex = random.Next(moves.Length);
+
+        // A variable to store the best move
+        Move bestMove = moves[0];
+        // Storing that eval also so we don't have to do it twice
+        // Maybe don't do this since namespaces take up memory
+        float bestEval = 0;
+        // Evaluating each move and keeping the one with the highest eval
+        foreach (Move m in moves) {
+            // Making the move on the board
+            board.MakeMove(m);
+            // Evaluating the position
+            float eval = Evaluate(board);
+            // If this is a better move than our previous best, save it
+            if (eval > bestEval) {
+                bestEval = eval;
+                bestMove = m;
+            }
+            // Undoing the move so we can evaluate the rest
+            board.UndoMove(m);
+        }
+
         // Returning a random move
-        return moves[randomIndex];
+        return bestMove;
     }
 
     /*
