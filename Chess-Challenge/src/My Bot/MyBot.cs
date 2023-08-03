@@ -33,20 +33,39 @@ public class MyBot : IChessBot
         private bool white = true;
 
         // Getter methods
-        public Node[] getChildren(){
+        public Node[] getChildren() {
             return children;
         }
 
-        public float getWins(){
+        public float getWins() {
             return wins;
         }
 
-        public int getVisits(){
+        public int getVisits() {
             return visits;
         }
 
-        public bool isWhite(){
+        public bool isWhite() {
             return white;
+        }
+
+        // A method to add a child to this node
+        // This could probably use a better implementation
+        // Maybe the storage of children needs a better data type?
+        public void addChild(Node node) {
+            // Creating a new array for the old children plus our new one
+            Node[] newChildren = new Node[children.Length + 1];
+
+            // Adding old children into the array
+            for (int i = 0; i < children.Length; i++) {
+                newChildren[i] = children[i];
+            }
+
+            // Adding new child to end of list
+            newChildren[newChildren.Length - 1] = node;
+
+            // Setting children to new array
+            children = newChildren;
         }
     }
 
