@@ -67,6 +67,12 @@ public class MyBot : IChessBot
             // Setting children to new array
             children = newChildren;
         }
+
+        // A method to increment wins by given input
+        // Increase by 1 for a win, 0.5 for a draw, 0 for a loss
+        public void incrementWins(float inc) {
+            wins += inc;
+        }
     }
 
 }
