@@ -30,10 +30,17 @@ public class MyBot : IChessBot
         private int visits = 0;
 
         // Is this node for white's turn or black's turn?
-        private bool white;
+        private readonly bool white;
 
         // Move this node is representing
-        private Move move;
+        private readonly Move move;
+
+        // Constructor
+        // Takes in a move and a color
+        public Node(Move move, bool white){
+            this.move = move;
+            this.white = white;
+        }
 
         // Getter methods
         public Node[] getChildren() {
