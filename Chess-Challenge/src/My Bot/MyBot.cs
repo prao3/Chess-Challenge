@@ -85,12 +85,18 @@ public class MyBot : IChessBot
         // A method to increment wins by given input
         // Increase by 1 for a win, 0.5 for a draw, 0 for a loss
         public void IncrementWins(float inc) {
+            // Throwing an error if the input isn't acceptable
+            if (inc != 0 && inc != 0.5 && inc != 1) {
+                throw new System.ArgumentException(string.Format("Node.IncrementWins: argument must be 0, 0.5, or 1, not {0}", inc));
+            }
+            // Incrementing wins
             wins += inc;
         }
 
         // A method to increment visits
         // This always increses by 1 so no args
         public void IncrementVisits() {
+            // Incrementing visits
             visits++;
         }
     }
