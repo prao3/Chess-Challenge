@@ -21,7 +21,7 @@ public class MyBot : IChessBot
 
         // The children of this node, stored in an ArrayList
         // Maybe need to optimize this idk
-        private Node[] children = new Node[0];
+        private Node[] children = System.Array.Empty<Node>();
 
         // Counting wins and draws for trajectories including this node
         private float wins = 0;
