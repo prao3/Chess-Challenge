@@ -43,30 +43,30 @@ public class MyBot : IChessBot
         }
 
         // Getter methods
-        public Node[] getChildren() {
+        public Node[] GetChildren() {
             return children;
         }
 
-        public float getWins() {
+        public float GetWins() {
             return wins;
         }
 
-        public int getVisits() {
+        public int GetVisits() {
             return visits;
         }
 
-        public bool isWhite() {
+        public bool IsWhite() {
             return white;
         }
 
-        public Move getMove() {
+        public Move GetMove() {
             return move;
         }
 
         // A method to add a child to this node
         // This could probably use a better implementation
         // Maybe the storage of children needs a better data type?
-        public void addChild(Node node) {
+        public void AddChild(Node node) {
             // Creating a new array for the old children plus our new one
             Node[] newChildren = new Node[children.Length + 1];
 
@@ -76,7 +76,7 @@ public class MyBot : IChessBot
             }
 
             // Adding new child to end of list
-            newChildren[newChildren.Length - 1] = node;
+            newChildren[^1] = node;
 
             // Setting children to new array
             children = newChildren;
@@ -84,13 +84,13 @@ public class MyBot : IChessBot
 
         // A method to increment wins by given input
         // Increase by 1 for a win, 0.5 for a draw, 0 for a loss
-        public void incrementWins(float inc) {
+        public void IncrementWins(float inc) {
             wins += inc;
         }
 
         // A method to increment visits
         // This always increses by 1 so no args
-        public void incrementVisits() {
+        public void IncrementVisits() {
             visits++;
         }
     }
