@@ -30,7 +30,10 @@ public class MyBot : IChessBot
         private int visits = 0;
 
         // Is this node for white's turn or black's turn?
-        private bool white = true;
+        private bool white;
+
+        // Move this node is representing
+        private Move move;
 
         // Getter methods
         public Node[] getChildren() {
@@ -47,6 +50,10 @@ public class MyBot : IChessBot
 
         public bool isWhite() {
             return white;
+        }
+
+        public Move getMove() {
+            return move;
         }
 
         // A method to add a child to this node
