@@ -1,6 +1,4 @@
 ﻿using ChessChallenge.API;
-using System;
-using System.Collections.Generic;
 
 public class MyBot : IChessBot
 {
@@ -33,6 +31,23 @@ public class MyBot : IChessBot
 
         // Is this node for white's turn or black's turn?
         private bool white = true;
+
+        // Getter methods
+        public Node[] getChildren(){
+            return children;
+        }
+
+        public float getWins(){
+            return wins;
+        }
+
+        public int getVisits(){
+            return visits;
+        }
+
+        public bool isWhite(){
+            return white;
+        }
     }
 
 }
