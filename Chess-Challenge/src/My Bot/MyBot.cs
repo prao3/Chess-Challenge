@@ -21,6 +21,18 @@ public class MyBot : IChessBot
     */
     public class Node {
 
+        // The children of this node, stored in an ArrayList
+        // Maybe need to optimize this idk
+        private Node[] children = new Node[0];
+
+        // Counting wins and draws for trajectories including this node
+        private float wins = 0;
+
+        // Counting visits to this node in MCTS
+        private int visits = 0;
+
+        // Is this node for white's turn or black's turn?
+        private bool white = true;
     }
 
 }
