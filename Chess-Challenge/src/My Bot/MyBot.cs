@@ -15,5 +15,12 @@ public class MyBot : IChessBot
         // Returning the best move
         return bestMove;
     }
-    
+
+    /*
+    A class representing a node in Monte-Carlo Tree Search
+    */
+    public class Node {
+
+    }
+
 }
