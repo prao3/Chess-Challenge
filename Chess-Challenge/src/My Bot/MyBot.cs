@@ -73,6 +73,12 @@ public class MyBot : IChessBot
         public void incrementWins(float inc) {
             wins += inc;
         }
+
+        // A method to increment visits
+        // This always increses by 1 so no args
+        public void incrementVisits() {
+            visits++;
+        }
     }
 
 }
