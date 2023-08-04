@@ -36,6 +36,7 @@ public class MyBot : IChessBot
         stack.Push(root);
         // Base case (at a leaf)
         // TODO: Include if node is terminal
+        // TODO: Also at a leaf if not all possible moves are in tree
         if (root.GetChildren().Length == 0) {
             // Returning the stack
             return stack;
