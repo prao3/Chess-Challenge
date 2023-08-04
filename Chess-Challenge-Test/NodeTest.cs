@@ -53,4 +53,15 @@ public class NodeTest
         // Testing input error
         Assert.ThrowsException<ArgumentException>(() => testNode1.IncrementWins(2));
     }
+
+    [TestMethod]
+    public void IsWhiteTest() {
+        // Testing white node
+        Assert.IsTrue(testNode1.IsWhite());
+
+        // Testing black node
+        Move move2 = new("e7e5", board);
+        Node testNode2 = new(move2, false);
+        Assert.IsFalse(testNode2.IsWhite());
+    }
 }
