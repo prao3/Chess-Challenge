@@ -32,15 +32,24 @@ public class NodeTest
     {
         // Testing that we start at 0
         Assert.AreEqual(0, testNode1.GetWins());
+        // Checking that we havent visited this node yet
+        Assert.AreEqual(0, testNode1.GetVisits());
+
         // Testing incrementing by 0
         testNode1.IncrementWins(0);
         Assert.AreEqual(0, testNode1.GetWins());
+        Assert.AreEqual(1, testNode1.GetVisits());
+
         // Testing incrementing by 0.5
         testNode1.IncrementWins(0.5f);
         Assert.AreEqual(0.5, testNode1.GetWins());
+        Assert.AreEqual(2, testNode1.GetVisits());
+
         // Testing incrementing by 1
         testNode1.IncrementWins(1);
         Assert.AreEqual(1.5, testNode1.GetWins());
+        Assert.AreEqual(3, testNode1.GetVisits());
+
         // Testing input error
         Assert.ThrowsException<ArgumentException>(() => testNode1.IncrementWins(2));
     }
