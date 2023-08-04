@@ -60,7 +60,7 @@ public class MyBot : IChessBot
             }
         }
         // Recursively calling Traverse, with the new root being the best child
-        return Traverse(bestChild, stack);
+        return Traverse(bestChild, board, stack);
     }
 
     /*
