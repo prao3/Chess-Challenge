@@ -59,6 +59,8 @@ public class MyBot : IChessBot
                 bestChild = child;
             }
         }
+        // Doing the selected move on the board
+        board.MakeMove(bestChild.GetMove());
         // Recursively calling Traverse, with the new root being the best child
         return Traverse(bestChild, board, stack);
     }
