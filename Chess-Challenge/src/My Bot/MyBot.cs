@@ -20,6 +20,8 @@ public class MyBot : IChessBot
     /*
     A method to recursively traverse the state tree from a given root down to a leaf
     Uses UCT to pick which path to take in tree for MCTS
+    Note: Traverse takes a board and makes moves on that board. It does not undo those moves!
+    We also assume that the move in the root has already been played on the board.
     
     Parameters
     ----------
@@ -31,7 +33,7 @@ public class MyBot : IChessBot
     -------
     Returns a Stack of type Node that contains all the nodes we traversed, in traversal order
     */
-    public static Stack<Node> Traverse(Node root, Stack<Node> stack) {
+    public static Stack<Node> Traverse(Node root, Board board, Stack<Node> stack) {
         // Add the root to the stack
         stack.Push(root);
         // Base case (at a leaf)
