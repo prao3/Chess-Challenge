@@ -1,4 +1,7 @@
 ﻿using ChessChallenge.API;
+using System.Collections.Generic;
+// Can I use this??
+using static System.Math;
 
 public class MyBot : IChessBot
 {
@@ -12,6 +15,49 @@ public class MyBot : IChessBot
 
         // Returning the best move
         return bestMove;
+    }
+
+    /*
+    A method to recursively traverse the state tree from a given root down to a leaf
+    Uses UCT to pick which path to take in tree for MCTS
+    
+    Parameters
+    ----------
+    root: The root node to start traversal from
+    
+    stack: The stack to store nodes into. Note that we edit the stack in place!
+
+    Returns
+    -------
+    Returns a Stack of type Node that contains all the nodes we traversed, in traversal order
+    */
+    public static Stack<Node> Traverse(Node root, Stack<Node> stack) {
+        // Add the root to the stack
+        stack.Push(root);
+        // Base case (at a leaf)
+        // TODO: Include if node is terminal
+        if (root.GetChildren().Length == 0) {
+            // Returning the stack
+            return stack;
+        }
+        // Getting the children of the root
+        Node[] children = root.GetChildren();
+        // Variable to store UCT score
+        float score = 0;
+        // Variable to store most desirable child
+        Node bestChild = children[0];
+        // Looping through all children
+        foreach (Node child in children) {
+            // Doing UCT
+            float newScore = child.GetWins() / child.GetVisits() + (float)Sqrt(2*root.GetVisits() / child.GetVisits());
+            // If this child is best, save it
+            if (newScore > score) {
+                score = newScore;
+                bestChild = child;
+            }
+        }
+        // Recursively calling Traverse, with the new root being the best child
+        return Traverse(bestChild, stack);
     }
 
     /*
