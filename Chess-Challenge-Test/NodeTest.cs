@@ -52,6 +52,7 @@ public class NodeTest
 
         // Testing input error
         Assert.ThrowsException<ArgumentException>(() => testNode1.IncrementWins(2));
+        Assert.AreEqual(3, testNode1.GetVisits());
     }
 
     [TestMethod]
