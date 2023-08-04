@@ -91,11 +91,7 @@ public class MyBot : IChessBot
             }
             // Incrementing wins
             wins += inc;
-        }
 
-        // A method to increment visits
-        // This always increses by 1 so no args
-        public void IncrementVisits() {
             // Incrementing visits
             visits++;
         }
