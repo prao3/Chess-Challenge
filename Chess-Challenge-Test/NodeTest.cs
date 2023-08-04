@@ -26,4 +26,22 @@ public class NodeTest
         // Testing color
         Assert.IsTrue(testNode1.IsWhite());
     }
+
+    [TestMethod]
+    public void TestWins()
+    {
+        // Testing that we start at 0
+        Assert.AreEqual(0, testNode1.GetWins());
+        // Testing incrementing by 0
+        testNode1.IncrementWins(0);
+        Assert.AreEqual(0, testNode1.GetWins());
+        // Testing incrementing by 0.5
+        testNode1.IncrementWins(0.5f);
+        Assert.AreEqual(0.5, testNode1.GetWins());
+        // Testing incrementing by 1
+        testNode1.IncrementWins(1);
+        Assert.AreEqual(1.5, testNode1.GetWins());
+        // Testing input error
+        Assert.ThrowsException<ArgumentException>(() => testNode1.IncrementWins(2));
+    }
 }
