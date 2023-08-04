@@ -65,4 +65,35 @@ public class NodeTest
         Node testNode2 = new(move2, false);
         Assert.IsFalse(testNode2.IsWhite());
     }
+
+    [TestMethod]
+    public void ChildrenTest()
+    {
+        // Making sure list is empty to begin with
+        Assert.AreEqual(0, testNode1.GetChildren().Length);
+
+        // Adding a child
+        Node child1 = new(new Move("e7e5", board), false);
+        testNode1.AddChild(child1);
+        // Running tests
+        Assert.AreEqual(1, testNode1.GetChildren().Length);
+        Assert.IsTrue(testNode1.GetChildren()[0].Equals(child1));
+
+        // Adding another child
+        Node child2 = new(new Move("d7d6", board), false);
+        testNode1.AddChild(child2);
+        // Running tests
+        Assert.AreEqual(2, testNode1.GetChildren().Length);
+        Assert.IsTrue(testNode1.GetChildren()[0].Equals(child1));
+        Assert.IsTrue(testNode1.GetChildren()[1].Equals(child2));
+
+        // Adding a third child
+        Node child3 = new(new Move("d7d5", board), false);
+        testNode1.AddChild(child3);
+        // Running tests
+        Assert.AreEqual(3, testNode1.GetChildren().Length);
+        Assert.IsTrue(testNode1.GetChildren()[0].Equals(child1));
+        Assert.IsTrue(testNode1.GetChildren()[1].Equals(child2));
+        Assert.IsTrue(testNode1.GetChildren()[2].Equals(child3));
+    }
 }
