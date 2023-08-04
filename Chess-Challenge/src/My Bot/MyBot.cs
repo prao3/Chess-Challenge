@@ -37,10 +37,13 @@ public class MyBot : IChessBot
         // Add the root to the stack
         stack.Push(root);
         // Base case (at a leaf)
+        // If we have no children, we are at a leaf
+        // Also at a leaf if not all possible moves are in tree
         // TODO: Include if node is terminal
-        // TODO: Also at a leaf if not all possible moves are in tree
-        if (root.GetChildren().Length == 0) {
-            // Returning the stack
+        bool atLeaf = root.GetChildren().Length == 0 || root.GetChildren().Length < board.GetLegalMoves().Length;
+        // If we are at a leaf...
+        if (atLeaf) {
+            // Return the stack
             return stack;
         }
         // Getting the children of the root
