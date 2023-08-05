@@ -845,11 +845,4 @@ public class TraverseTest {
         // Stack should be empty
         Assert.AreEqual(0, stack.Count);
     }
-
-    // Testing Traverse for decisive result!
-    [TestMethod]
-    public void CheckmateTest() 
-    {
-        Assert.IsTrue(false, "Not Implemented");
-    }
 }
