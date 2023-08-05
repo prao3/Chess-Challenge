@@ -234,7 +234,27 @@ public class TraverseTest {
         // Making the move on the board
         KPBoard.MakeMove(StartMove);
         // Creating root
-        Node root = new Node(StartMove, false);
+        Node root = new(StartMove, false);
+        // Setting root visits and wins
+        int RootVisits = 20;
+        float RootWins = 5;
+        for (int i = 0; i < RootVisits; i++) {
+            // If we still need to add wins
+            if (root.GetWins() < RootWins) {
+                // If we have a 1/2 a point, we only want to add 0.5
+                if (RootWins % 1 != 0) {
+                    root.IncrementWins(0.5f);
+                }
+                // Otherwise, we want to add 1
+                else {
+                    root.IncrementWins(1);
+                }
+            }
+            // Otherwise, we just add 0 to wins counter
+            else {
+                root.IncrementWins(0);
+            }
+        }
         // Getting possible moves
         Move[] PossibleMoves = KPBoard.GetLegalMoves();
         // An array to store root children in
@@ -258,7 +278,7 @@ public class TraverseTest {
                 BranchNode = CurrentNode;
             }
             // If this is should be the first move off the stack, save it!
-            if ((PossibleMoves[i].StartSquare.Name + PossibleMoves[i].TargetSquare.Name).Equals("h2h4")) {
+            if ((PossibleMoves[i].StartSquare.Name + PossibleMoves[i].TargetSquare.Name).Equals("h1g2")) {
                 ExpectedFirstNode = CurrentNode;
             }
         }
