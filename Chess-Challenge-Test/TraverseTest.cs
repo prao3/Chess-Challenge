@@ -58,7 +58,7 @@ public class TraverseTest {
     public void ShallowTraverseTest() 
     {
         // Starting move
-        Move StartMove = new ("b8a8", CheckBoard);
+        Move StartMove = new ("b8a8", KPBoard);
         // Making the move on the board
         KPBoard.MakeMove(StartMove);
         // Creating root
