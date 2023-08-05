@@ -56,7 +56,7 @@ public class MyBot : IChessBot
         foreach (Node child in children) {
             // Doing UCT
             // TODO: Fix potential divide by zero issues
-            float newScore = child.GetWins() / child.GetVisits() + (float)Sqrt(2*root.GetVisits() / child.GetVisits());
+            float newScore = child.GetWins() / child.GetVisits() + (float)Sqrt(2*Log(root.GetVisits()) / child.GetVisits());
             // If this child is best, save it
             if (newScore > score) {
                 score = newScore;
