@@ -36,6 +36,12 @@ public class TraverseTest {
         return new Node(Move.NullMove, true);
     }
 
+    [TestMethod]
+    public void Test() 
+    {
+        Assert.IsTrue(false);
+    }
+
     // Testing Traverse when root has no children
     [TestMethod]
     public void RootNoChildrenTest() 
