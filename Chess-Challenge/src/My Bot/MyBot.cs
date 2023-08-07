@@ -153,6 +153,20 @@ public class MyBot : IChessBot
             // Incrementing visits
             visits++;
         }
+
+        // Overriding equals method
+        // Equal if move is equal!
+        public override bool Equals(object? obj)
+        {
+            // If input object is null, return false
+            if (obj == null) {
+                return false;
+            }
+            // Otherwise, convert to a Node object
+            Node? input = obj as Node;
+            // Returning true if same move
+            return this.GetMove().Equals(input.GetMove());
+        }
     }
 
 }
