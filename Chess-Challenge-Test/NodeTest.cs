@@ -19,6 +19,21 @@ public class NodeTest
     }
 
     [TestMethod]
+    public void TestEquals()
+    {
+        Node testNode2 = new(new Move("e2e4", board), true);
+        Node testNode3 = new(new Move("e2e4", board), false);
+        Node testNode4 = new(new Move("e2e3", board), true);
+
+        Assert.IsTrue(testNode1.Equals(testNode2));
+        Assert.IsFalse(testNode2.Equals(testNode3));
+        Assert.IsFalse(testNode1.Equals(testNode4));
+
+        // Testing null condition too
+        Assert.IsFalse(testNode2.Equals(null));
+    }
+
+    [TestMethod]
     public void TestConstructor()
     {
         // Testing that the move in the node is the same
