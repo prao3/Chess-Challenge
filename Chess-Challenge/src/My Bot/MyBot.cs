@@ -167,6 +167,11 @@ public class MyBot : IChessBot
             // Returning true if same move
             return this.GetMove().Equals(input.GetMove());
         }
+
+        public override int GetHashCode()
+        {
+            return this.GetMove().GetHashCode();
+        }
     }
 
 }
