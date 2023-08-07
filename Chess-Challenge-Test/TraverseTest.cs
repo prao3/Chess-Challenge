@@ -28,13 +28,11 @@ public class TraverseTest {
     ----------
     FileName: Path to file to read tree from
 
-    board: Chess board tree is associated with. It should not have the root move on it!
-
     Returns
     -------
     The root node of the completed tree
     */
-    private Node MakeTree(string FileName, Board board) {
+    private Node MakeTree(string FileName) {
         return new Node(Move.NullMove, true);
     }
 
