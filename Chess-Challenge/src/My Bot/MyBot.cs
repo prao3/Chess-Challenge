@@ -155,7 +155,7 @@ public class MyBot : IChessBot
         }
 
         // Overriding equals method
-        // Equal if move is equal!
+        // Equal if move is equal and color is equal
         public override bool Equals(object? obj)
         {
             // If input object is null, return false
@@ -165,7 +165,7 @@ public class MyBot : IChessBot
             // Otherwise, convert to a Node object
             Node? input = obj as Node;
             // Returning true if same move
-            return this.GetMove().Equals(input.GetMove());
+            return this.GetMove().Equals(input.GetMove()) && this.IsWhite() == input.IsWhite();
         }
 
         public override int GetHashCode()
