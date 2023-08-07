@@ -21,6 +21,23 @@ public class TraverseTest {
         CheckBoard = Board.CreateBoardFromFEN("1k6/2P5/1KP5/1PP5/8/8/8/8 b - - 0 1");
     }
 
+    /*
+    A method to generate a state tree from a given file (for testing only)
+    
+    Parameters
+    ----------
+    FileName: Path to file to read tree from
+
+    board: Chess board tree is associated with. It should not have the root move on it!
+
+    Returns
+    -------
+    The root node of the completed tree
+    */
+    private Node MakeTree(string FileName, Board board) {
+        return new Node(Move.NullMove, true);
+    }
+
     // Testing Traverse when root has no children
     [TestMethod]
     public void RootNoChildrenTest() 
