@@ -244,7 +244,7 @@ public class TraverseTest {
     -------
     The root node of the completed tree
     */
-    private static Node MakeTree(string FileName, out Board board) {
+    public static Node MakeTree(string FileName, out Board board) {
         // Reading all text in file
         string[] AllText = File.ReadAllLines(FileName);
         // Making a board out of given FEN
@@ -301,11 +301,11 @@ public class TraverseTest {
     }
 
     /*
-    A private helper method to make a node from a string
+    A method to make a node from a string
     The string has format <move> <wins> <visits> <color> (e.g. e2e4 5 20 1)
     A one in the color spot means white, black is 0
     */
-    private static Node MakeNodeFromString(string NodeInfo, Board board) {
+    public static Node MakeNodeFromString(string NodeInfo, Board board) {
         // Splitting string around spaces
         string[] SubStrings = NodeInfo.Split(' ');
         // Creating move from substring
