@@ -3,13 +3,13 @@
 root
 b8a8 5 20 0
 
-parent b8a8
+parent b8a8 5 20 0
 h2h3 7 8 1
 h2h4 4 5 1
 h1g1 0 2 1
 h1g2 3 5 1
 
-parent h2h4
+parent h2h4 4 5 1
 a7a6 0 1 0
 a7a5 1 1 0
 a8b8 0 2 0
