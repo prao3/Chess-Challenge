@@ -18,6 +18,23 @@ public class MyBot : IChessBot
     }
 
     /*
+    A method to do a playout according to playout policy
+    Plays moves on the given board, adds move as children to root, and adds new nodes to stack
+    Note: we assume the root move is already on the board
+
+    Parameters
+    ----------
+    root: The last played move on the board
+
+    board: Chess board we are using. Playout moves will be played on this board
+
+    stack: Stack to store new nodes on (should be populated with nodes from traverse)
+    */
+    public static void Playout(Node root, out Board board, out Stack<Node> stack) {
+
+    }
+
+    /*
     A method to recursively traverse the state tree from a given root down to a leaf
     Uses UCT to pick which path to take in tree for MCTS
     Note: Traverse takes a board and makes moves on that board. It does not undo those moves!
