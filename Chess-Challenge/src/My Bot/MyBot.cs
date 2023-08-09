@@ -1,4 +1,5 @@
 ﻿using ChessChallenge.API;
+using System;
 using System.Collections.Generic;
 // Can I use this??
 using static System.Math;
@@ -29,9 +30,48 @@ public class MyBot : IChessBot
     board: Chess board we are using. Playout moves will be played on this board
 
     stack: Stack to store new nodes on (should be populated with nodes from traverse)
-    */
-    public static void Playout(Node root, out Board board, out Stack<Node> stack) {
 
+    Returns
+    -------
+    Returns passed in stack with playout moves added
+    */
+    public static Stack<Node> Playout(Node root, Board board, Stack<Node> stack) {
+        // If board position is terminal, return
+        if (IsTerminal(board)) {
+            return stack;
+        }
+        // Getting next move to play
+        Move NextMove = PlayoutPolicy(board.GetLegalMoves());
+        // Creating node
+        Node NextNode = new(NextMove, !root.IsWhite());
+        // Assigning as child of root
+        root.AddChild(NextNode);
+        // Adding next node to stack
+        stack.Push(NextNode);
+        // Making move on the board
+        board.MakeMove(NextMove);
+        // Returning recursive call
+        return Playout(NextNode, board, stack);
+    }
+
+    /*
+    A helper method to check if position is terminal
+    */
+    private static bool IsTerminal(Board board) {
+        return board.IsDraw() || board.IsInCheckmate();
+    }
+
+    /*
+    A helper method to get next choice of move for Playout.
+    Takes in a list of moves and returns one of them according to policy.
+    */
+    private static Move PlayoutPolicy(Move[] moves) {
+        // Getting rng
+        Random rng = new();
+        // Random index in moves
+        int i = rng.Next(moves.Length);
+        // Returning random move
+        return moves[i];
     }
 
     /*
