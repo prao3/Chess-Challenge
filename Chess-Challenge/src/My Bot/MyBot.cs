@@ -19,6 +19,35 @@ public class MyBot : IChessBot
     }
 
     /*
+    Propagates result of game back through the given stack of nodes
+    This method also unplays all the moves in the stack on the given board
+    (This means we assume all moves in the stack are on the given board)
+    */
+    public static void Backpropagate(Board board, Stack<Node> stack) {
+        // Checking if final position is a draw
+        bool IsDraw = board.IsDraw();
+        // Storing score to assign
+        float Score = 0;
+        // If a draw, score is 0.5 and not 0
+        if (IsDraw) {
+            Score = 0.5f;
+        }
+        // Pulling everything off the stack and assigning score
+        while (stack.Count > 0) {
+            // Pulling off the latest move
+            Node CurrentMove = stack.Pop();
+            // Undoing the move on the board
+            board.UndoMove(CurrentMove.GetMove());
+            // If not a draw, then we add one and mod 2 to score
+            if (!IsDraw) {
+                Score = (Score + 1) % 2;
+            }
+            // Assigning score
+            CurrentMove.IncrementWins(Score);
+        }
+    }
+
+    /*
     A method to do a playout according to playout policy
     Plays moves on the given board, adds move as children to root, and adds new nodes to stack
     Note: we assume the root move is already on the board
