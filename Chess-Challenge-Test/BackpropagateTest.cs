@@ -15,6 +15,11 @@ public class BackpropagateTest {
         stack = Traverse(root, board, stack);
         // Hanging onto nodes
         Node EndNode = stack.Pop();
+        root = stack.Pop();
+        // Undoing move
+        board.UndoMove(EndNode.GetMove());
+        // Re-traversing tree
+        stack = Traverse(root, board, stack);
         // Backpropagating
         Backpropagate(board, stack);
 
@@ -38,6 +43,39 @@ public class BackpropagateTest {
         stack = Traverse(root, board, stack);
         // Hanging onto nodes
         Node EndNode = stack.Pop();
+        root = stack.Pop();
+        // Undoing move
+        board.UndoMove(EndNode.GetMove());
+        // Re-traversing tree
+        stack = Traverse(root, board, stack);
+        // Backpropagating
+        Backpropagate(board, stack);
+
+        // Asserting end node visits and wins are correct
+        Assert.AreEqual(4, EndNode.GetVisits());
+        Assert.AreEqual(4, EndNode.GetWins());
+
+        // Checking root visits and wins
+        Assert.AreEqual(11, root.GetVisits());
+        Assert.AreEqual(3, root.GetWins());
+    }
+
+    [TestMethod]
+    public void BlackWinTest() {
+        // Test file name
+        string FileName = "..\\..\\..\\BackpropagateTests\\blackwintest.txt";
+        // Making tree
+        Node root = TraverseTest.MakeTree(FileName, out Board board);
+        // Traversing tree
+        Stack<Node> stack = new();
+        stack = Traverse(root, board, stack);
+        // Hanging onto nodes
+        Node EndNode = stack.Pop();
+        root = stack.Pop();
+        // Undoing move
+        board.UndoMove(EndNode.GetMove());
+        // Re-traversing tree
+        stack = Traverse(root, board, stack);
         // Backpropagating
         Backpropagate(board, stack);
 
