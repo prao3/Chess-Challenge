@@ -22,6 +22,12 @@ public class MyBot : IChessBot
     Propagates result of game back through the given stack of nodes
     This method also unplays all the moves in the stack on the given board
     (This means we assume all moves in the stack are on the given board)
+
+    Parameters
+    ----------
+    board: Chess board moves have been played on
+
+    stack: The stack with all moves played since current position in actual game
     */
     public static void Backpropagate(Board board, Stack<Node> stack) {
         // Checking if final position is a draw
