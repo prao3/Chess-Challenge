@@ -90,7 +90,7 @@ public class MyBot : IChessBot
             Score = 0.5f;
         }
         // Pulling everything off the stack and assigning score except for root move
-        while (stack.Count > 1) {
+        while (stack.Count > 0) {
             // Pulling off the latest move
             Node CurrentMove = stack.Pop();
             // Undoing the move on the board
@@ -102,13 +102,6 @@ public class MyBot : IChessBot
             // Assigning score
             CurrentMove.IncrementWins(Score);
         }
-        // Incrementing root wins
-        if (!IsDraw) {
-            Score = (Score + 1) % 2;
-        }
-        // Doing root
-        Node root = stack.Pop();
-        root.IncrementWins(Score);
     }
 
     /*
