@@ -8,14 +8,30 @@ public class MyBot : IChessBot
 {
     public Move Think(Board board, Timer timer)
     {
-        // Legal moves on the board
-        Move[] moves = board.GetLegalMoves();
-
-        // A variable to store the best move
-        Move bestMove = moves[0];
+        // If we are first, play e2e4
+        if (board.PlyCount == 0) {
+            return new Move("e2e4", board);
+        }
+        // Getting last move
+        Move LastMove = board.GameMoveHistory[^1];
+        // Making move into root node
+        Node root = new(LastMove, !board.IsWhiteToMove);
+        // Doing MCTS for some number of loops
+        for (int i = 0; i < 1; i++) {
+            MCTS(board, root);
+        }
+        // Keeping track of best move and most visits
+        int MostVisits = 0;
+        Node BestMove = root.GetChildren()[0];
+        // Picking move with most visits
+        foreach (Node child in root.GetChildren()) {
+            if (child.GetVisits() > MostVisits) {
+                BestMove = child;
+            }
+        }
 
         // Returning the best move
-        return bestMove;
+        return BestMove.GetMove();
     }
 
     /*
