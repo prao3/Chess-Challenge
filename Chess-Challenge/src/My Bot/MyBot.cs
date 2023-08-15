@@ -19,6 +19,37 @@ public class MyBot : IChessBot
     }
 
     /*
+    Does Monte-Carlo Tree Search!!!!
+    */
+    public static void MCTS(Board board, Node root) {
+        // Stack to store moves
+        Stack<Node> stack = new();
+        // Traversing tree
+        stack = Traverse(root, board, stack);
+        // Getting leaf
+        Node leaf = stack.Peek();
+        // Getting possible moves in position at leaf
+        Move[] moves = board.GetLegalMoves();
+        // Adding new children to leaf node
+        foreach (Move m in moves) {
+            // Making a node
+            Node node = new(m, !leaf.IsWhite());
+            // If node is not a child already, add it
+            if (!Array.Exists<Node>(leaf.GetChildren(), element => element.Equals(node))) {
+                leaf.AddChild(node);
+            }
+        }
+        // Choosing move for playout
+        Node PlayoutNode = leaf.GetChildren()[0];
+        // Making move on board
+        board.MakeMove(PlayoutNode.GetMove());
+        // Doing playout
+        stack = Playout(PlayoutNode, board, stack);
+        // Backpropagating
+        Backpropagate(board, stack);
+    }
+
+    /*
     Propagates result of game back through the given stack of nodes
     This method also unplays all the moves in the stack on the given board
     (This means we assume all moves in the stack are on the given board)
