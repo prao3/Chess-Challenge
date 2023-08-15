@@ -10,6 +10,8 @@ public class BackpropagateTest {
         string FileName = "..\\..\\..\\BackpropagateTests\\drawtest.txt";
         // Making tree
         Node root = TraverseTest.MakeTree(FileName, out Board board);
+        // Making root move on board
+        board.MakeMove(root.GetMove());
         // Traversing tree
         Stack<Node> stack = new();
         stack = Traverse(root, board, stack);
@@ -38,6 +40,8 @@ public class BackpropagateTest {
         string FileName = "..\\..\\..\\BackpropagateTests\\whitewintest.txt";
         // Making tree
         Node root = TraverseTest.MakeTree(FileName, out Board board);
+        // Making root move on board
+        board.MakeMove(root.GetMove());
         // Traversing tree
         Stack<Node> stack = new();
         stack = Traverse(root, board, stack);
@@ -66,6 +70,8 @@ public class BackpropagateTest {
         string FileName = "..\\..\\..\\BackpropagateTests\\blackwintest.txt";
         // Making tree
         Node root = TraverseTest.MakeTree(FileName, out Board board);
+        // Making root move on board
+        board.MakeMove(root.GetMove());
         // Traversing tree
         Stack<Node> stack = new();
         stack = Traverse(root, board, stack);
