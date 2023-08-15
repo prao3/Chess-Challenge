@@ -3,7 +3,7 @@
 root
 b8a8 3 10 0
 
-parent b8a8 1.5 10 0
+parent b8a8 3 10 0
 c7c8n 0 1 1
 c7c8b 0 2 1
 c7c8r 3 3 1
