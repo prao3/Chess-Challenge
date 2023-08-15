@@ -30,6 +30,10 @@ public class MyBot : IChessBot
     stack: The stack with all moves played since current position in actual game
     */
     public static void Backpropagate(Board board, Stack<Node> stack) {
+        // If the position isn't terminal, throw an error!
+        if (!IsTerminal(board)) {
+            throw new System.ArgumentException("Given board is not terminal!");
+        }
         // Checking if final position is a draw
         bool IsDraw = board.IsDraw();
         // Storing score to assign
